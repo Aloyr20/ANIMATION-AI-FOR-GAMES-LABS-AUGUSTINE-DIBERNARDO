@@ -1,0 +1,32 @@
+using UnityEngine;
+
+public class RayCastManager : MonoBehaviour
+{
+    [SerializeField] GameObject Target;
+    public Camera cam;
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    void Start()
+    {
+        cam = GetComponent<Camera>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        SetTarget();
+    }
+
+    private void SetTarget()
+    {
+        if(Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hit;
+
+            if(Physics.Raycast(ray, out hit))
+            {
+                Target.transform.position = hit.point;
+            }
+        }
+    }
+}
