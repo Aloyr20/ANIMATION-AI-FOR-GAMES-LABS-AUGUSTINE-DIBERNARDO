@@ -20,11 +20,13 @@ public class RayCastManager : MonoBehaviour
     {
         if(Input.GetKeyDown(KeyCode.Mouse0))
         {
+            Debug.Log("hit");
             Ray ray = cam.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
             if(Physics.Raycast(ray, out hit))
             {
+                Debug.Log("hit1");
                 Target.transform.position = hit.point;
             }
         }
